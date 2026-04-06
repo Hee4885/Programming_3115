@@ -12,6 +12,7 @@ function CounterApp() {
   return (
     <>
     <h1>{count}</h1>
+    <h2>dd</h2>
     <button onClick={() => setCount((count)=>count+1)}>+</button> {/*error : Too many re-randers*/}
     <button onClick={() => setCount((count)=>count+2)}>+2</button> {/*error : Too many re-randers*/}
     <button onClick={() => setCount((count)=>count-1)}>-</button> {/*error : Too many re-randers*/}
