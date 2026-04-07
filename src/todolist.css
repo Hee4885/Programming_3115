@@ -1,0 +1,84 @@
+.todo{
+    /* width: 80%;
+    min-width: 400px; */
+
+    width: max(80%, 400px); /* 80% 가 400px 보다 작을 때는 400px로 width의 값으로 주기 : (기본 80%, 최소 400px) */
+    background-color: #f9f9f9;
+    
+    
+    margin: 20px auto;  /* 위아래 20px, 좌우 여백 균등하게 margin */
+    /* auto : 남은 공간에 크기를 똑같이 분배한다. (가운데 정렬한 것처럼 보임) */
+
+    /* padding은 content 안쪽 margin은 바깥쪽 */
+    
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1); /* x축: 0, y축: 아래로 2px, blur: 4px, 검정에 불투명도 0.1 */
+}
+
+.todo__form{
+    display: flex; /* 수평 배치 */
+    padding: 10px; /* 안쪽 여백 */
+    margin-bottom: 10px;
+}
+
+.todo__input{
+    /* em : 부모 폰트 사이즈 * (몇)em */
+   /* rem : 16px * 1.2배 */
+
+    font-size: 1.2rem; 
+    border:  1px solid #ccc;
+    border-radius: 8px;
+    margin-right: 10px;
+    flex: 1; /* flex일 때 남은 공간 다 차지*/
+}
+
+.todo__button{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.todo__button--add{
+    background-color: #4984e4;
+}
+
+.todo__item{
+    display: flex;
+    align-items: center; /* 높이 가운데 정렬*/
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    gap: 10px; /* flex가 되는 아이템 사이 여백 */
+}
+
+.todo__check{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color : #999; /* 체크한 배경색: 눈에 덜 띄게 함 */
+}
+
+.todo__label{
+    flex: 1;
+}
+
+.todo__button--edit,
+.todo__button--delete{
+    font-size: 0.8rem;
+    padding: 6px;
+}
+
+/* .todo__item--comlete 밑에 .todo__label을 흐리게, 취소선하자 
+
+    1) .todo__item--comlete > .todo__label    -> 바로 아래 자식
+
+    2) .todo__item--comlete .todo__label  -> 언젠가 아래 자손
+
+*/
+.todo__item--comlete .todo__label{
+    color: #999;
+    text-decoration: line-through;  /* line 관통 */
+}
