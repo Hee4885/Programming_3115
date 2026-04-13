@@ -29,6 +29,7 @@
     font-size: 1.2rem; 
     border:  1px solid #ccc;
     border-radius: 8px;
+    padding: 10px;
     margin-right: 10px;
     flex: 1; /* flex일 때 남은 공간 다 차지*/
 }
