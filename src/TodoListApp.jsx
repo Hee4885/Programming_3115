@@ -25,7 +25,7 @@ function TodoListApp(){
         // 이전 todos 복사하자
         // newTodo 만들자
         // 이전 todos에 추가하자
-        new Todo(Text)
+        new Todo(text)
     ]);
 
     // const addTodo = (text) => setTodos((todos) => [...todos, new Todo(text)]);
@@ -34,7 +34,7 @@ function TodoListApp(){
         <div className="todo">
             <TodoHeader />
             <TodoAdder addTodo={addTodo} />
-            <TodoList />
+            <TodoList todos={todos}/>
         </div>
     )
 }
