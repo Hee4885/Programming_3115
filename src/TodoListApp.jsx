@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
 import './todolist.css'
-import TOdoItem from './components/TodoItem.jsx'
-import './components/Button'
+import TodoItem from './components/TodoItem.jsx'
 import Button from './components/Button';
 import TodoItemEmpty from './components/TodoItemEmpty.jsx'
 import TodoHeader from './components/TodoHeader.jsx';
@@ -29,12 +28,20 @@ function TodoListApp(){
     ]);
 
     // const addTodo = (text) => setTodos((todos) => [...todos, new Todo(text)]);
+    const toggleTodo = (id) => {
+        // todos에서 그 id에 해당하는 todo 찾고, 그 todo의 isComleted를 true -> false, false -> true
+        setTodos((todos) =>
+            todos.map((todo) =>
+                todo.id === id ? {...todo, isCompleted: !todo.isCompleted} : todo
+            )
+        )
+    };
 
     return(
         <div className="todo">
             <TodoHeader />
             <TodoAdder addTodo={addTodo} />
-            <TodoList todos={todos}/>
+            <TodoList todos={todos} toggleTodo={toggleTodo} />
         </div>
     )
 }
