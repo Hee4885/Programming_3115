@@ -35,6 +35,7 @@ function TodoListApp(){
         "[{id: 178278, isCompleted: false, text:"가입"}, {}, {}]"
     */
 
+   const [todos, setTodos] = useState(initTodos); // 할일 목록 : 기본값 빈 리스트
 
     //todos가 바뀌면, LocalStroage에 저장하자 
     // [](mount할 때 한번 실행), [새앤]에 있는 state가 바뀌면, 그 앞 함수 정의를 호출하자
@@ -43,7 +44,6 @@ function TodoListApp(){
     },[todos]);
 
 
-    const [todos, setTodos] = useState([initTodos]); // 할일 목록 : 기본값 빈 리스트
     const addTodo = (text) => setTodos((todos) => [
         ...todos, 
         // 이전 todos 복사하자
