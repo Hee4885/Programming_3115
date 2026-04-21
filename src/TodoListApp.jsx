@@ -29,7 +29,7 @@ function TodoListApp(){
 
     // const addTodo = (text) => setTodos((todos) => [...todos, new Todo(text)]);
     const toggleTodo = (id) => {
-        // todos에서 그 id에 해당하는 todo 찾고, 그 todo의 isComleted를 true -> false, false -> true
+        // todos에서 그 id에 해당하는 todo 찾고, 그 todo의 isCompleted를 true -> false, false -> true
         setTodos((todos) =>
             todos.map((todo) =>
                 todo.id === id ? {...todo, isCompleted: !todo.isCompleted} : todo
@@ -44,11 +44,19 @@ function TodoListApp(){
         )
     };
 
+    const editTodo = (id, newText) => {
+        setTodos((todos) =>
+            //todos에서 하나씩 todo 꺼내고, id가 같은 todo 찾아서, text를 newText로 수정하자
+           // ...todo 이전 값
+            (todos.map((todo) => todo.id === id?  {...todo, text: newText} : todo))
+        )
+    }
+
     return(
         <div className="todo">
             <TodoHeader />
+            <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
             <TodoAdder addTodo={addTodo} />
-            <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
         </div>
     )
 }

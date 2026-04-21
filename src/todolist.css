@@ -72,14 +72,18 @@
     padding: 6px;
 }
 
-/* .todo__item--comlete 밑에 .todo__label을 흐리게, 취소선하자 
+/* .todo__item--complete 밑에 .todo__label을 흐리게, 취소선하자 
 
-    1) .todo__item--comlete > .todo__label    -> 바로 아래 자식
+    1) .todo__item--complete > .todo__label    -> 바로 아래 자식
 
-    2) .todo__item--comlete .todo__label  -> 언젠가 아래 자손
+    2) .todo__item--complete .todo__label  -> 언젠가 아래 자손
 
 */
 .todo__item--comlete .todo__label{
     color: #999;
     text-decoration: line-through;  /* line 관통 */
+}
+
+.todo__input--edit{
+    flex: 1;
 }

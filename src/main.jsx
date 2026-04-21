@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './reset.css'
+import './todolist.css'
+// import './reset.css'
 // import './index.css'
 
 import TodoListApp from './TodoListApp'
