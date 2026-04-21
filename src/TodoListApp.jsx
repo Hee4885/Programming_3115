@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './todolist.css'
 import TodoItem from './components/TodoItem.jsx'
@@ -9,6 +9,7 @@ import Checkbox from './components/Checkbox.jsx';
 import TodoAdder from './components/TodoAdder.jsx'
 import TodoList from './components/TodoList.jsx'
 
+
 class Todo {
     constructor(text){
         this.id = Date.now(); // 할일 고유 id 
@@ -17,8 +18,32 @@ class Todo {
     }
 }
 
+
+const TODOS_STORAGE_KEY = "todos";
+
 function TodoListApp(){
-    const [todos, setTodos] = useState([]); // 할일 목록 : 기본값 빈 리스트
+    // LocalStorage 에서 저장된 할일 목록 가져오자
+   
+    const initTodos = () => {
+        const savedTodos = localStorage.getItem(TODOS_STORAGE_KEY);
+        
+        return savedTodos ? JSON.parse(savedTodos) : [];
+        //가져온게 있으면 문자열로 되어 있는 것을 json으로 파싱(해석)하면 객체로 가져올 수 있고, 없으면 빈 리스트
+    }
+   
+    /* 이런 형식으로 로컬스토리지에 저장됨
+        "[{id: 178278, isCompleted: false, text:"가입"}, {}, {}]"
+    */
+
+
+    //todos가 바뀌면, LocalStroage에 저장하자 
+    // [](mount할 때 한번 실행), [새앤]에 있는 state가 바뀌면, 그 앞 함수 정의를 호출하자
+    useEffect(() => {
+        localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos));
+    },[todos]);
+
+
+    const [todos, setTodos] = useState([initTodos]); // 할일 목록 : 기본값 빈 리스트
     const addTodo = (text) => setTodos((todos) => [
         ...todos, 
         // 이전 todos 복사하자

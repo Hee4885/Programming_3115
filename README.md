@@ -11,4 +11,19 @@ npm crate vite@latest .
 - `onClick={() =>  set함수()}`
 - `onClick={() =>  set함수((이전state) => 이전state + 1)}`
 ### TodoListApp
-
+- React Component 분리
+- for -> html, class -> className
+- props 
+- `<input id={id} value={}`,`<label htmlfor={id} />`
+- onChange
+- 구조 분해 할당
+- `...연산자`
+- `<form onSubmit={} />`
+- `덩어리.map()`
+- `<TodoItem key={} />`
+- `const handleEvent = (event) => {}`
+- `{조건식 ? 참 : 거짓}`
+- `{조건식 && 참}`
+- `{!조건식 && 거짓}`
+- onKeyDown
+- LocalStorage, `useEffect()`
