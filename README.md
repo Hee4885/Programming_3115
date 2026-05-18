@@ -30,3 +30,14 @@ npm crate vite@latest .
 - `style={{}}`
 - HomeApp: page state가 home이면 `<ButtonPageApp />`, counterapp이면 `<CounterApp />`,
   todolistapp이면 `<TodoListApp />`
+- npm install react-router-dom (특정 주소에 특정 라우터를 던져주는)
+- ```javascript
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={} />
+        </Routes>
+    </BrowserRouter>
+```
+- ```javascript
+    <Link to="/"></Link>
+```
