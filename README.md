@@ -41,3 +41,4 @@ npm crate vite@latest .
 - ```javascript
     <Link to="/"></Link>
 ```
+- `useNavigate()`
