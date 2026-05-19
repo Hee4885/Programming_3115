@@ -8,12 +8,12 @@ function LinkButtonPageApp() {
         <>
             <h1>App 목록</h1>
             {/* ul>(li>link)*2 */}
-            <ul>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
                 <li>
-                    <Link to="/counterapp">🔢</Link>
+                    <Link to="/counterapp">🔢 CounterApp</Link>
                 </li>
                 <li>
-                    <Link to="/todolistapp">✅</Link>
+                    <Link to="/todolistapp">✅ TodoListApp</Link>
                 </li>
             </ul>
         </>
