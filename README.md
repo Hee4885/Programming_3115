@@ -42,3 +42,4 @@ npm crate vite@latest .
     <Link to="/"></Link>
 ```
 - `useNavigate()`
+- 3115 전희진 1-2	배경색	★	useState, CSS class/style 변경

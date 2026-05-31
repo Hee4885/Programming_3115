@@ -11,7 +11,7 @@ import TodoList from './components/TodoList.jsx'
 
 
 class Todo {
-    constructor(text){
+    constructor(text) {
         this.id = Date.now(); // 할일 고유 id 
         this.text = text; // 할일 내용
         this.isCompleted = false; //완료 여부
@@ -21,31 +21,31 @@ class Todo {
 
 const TODOS_STORAGE_KEY = "todos";
 
-function TodoListApp(){
+function TodoListApp() {
     // LocalStorage 에서 저장된 할일 목록 가져오자
-   
+
     const initTodos = () => {
         const savedTodos = localStorage.getItem(TODOS_STORAGE_KEY);
-        
+
         return savedTodos ? JSON.parse(savedTodos) : [];
         //가져온게 있으면 문자열로 되어 있는 것을 json으로 파싱(해석)하면 객체로 가져올 수 있고, 없으면 빈 리스트
     }
-   
+
     /* 이런 형식으로 로컬스토리지에 저장됨
         "[{id: 178278, isCompleted: false, text:"가입"}, {}, {}]"
     */
 
-   const [todos, setTodos] = useState(initTodos); // 할일 목록 : 기본값 빈 리스트
+    const [todos, setTodos] = useState(initTodos); // 할일 목록 : 기본값 빈 리스트
 
     //todos가 바뀌면, LocalStroage에 저장하자 
     // [](mount할 때 한번 실행), [새앤]에 있는 state가 바뀌면, 그 앞 함수 정의를 호출하자
     useEffect(() => {
         localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos));
-    },[todos]);
+    }, [todos]);
 
 
     const addTodo = (text) => setTodos((todos) => [
-        ...todos, 
+        ...todos,
         // 이전 todos 복사하자
         // newTodo 만들자
         // 이전 todos에 추가하자
@@ -57,14 +57,14 @@ function TodoListApp(){
         // todos에서 그 id에 해당하는 todo 찾고, 그 todo의 isCompleted를 true -> false, false -> true
         setTodos((todos) =>
             todos.map((todo) =>
-                todo.id === id ? {...todo, isCompleted: !todo.isCompleted} : todo
+                todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
             )
         )
     };
 
     const deleteTodo = (id) => {
         //id가 같지 않은 todo만 복사하자 (filter())
-        setTodos((todos) => 
+        setTodos((todos) =>
             todos.filter((todo) => todo.id !== id)
         )
     };
@@ -72,14 +72,28 @@ function TodoListApp(){
     const editTodo = (id, newText) => {
         setTodos((todos) =>
             //todos에서 하나씩 todo 꺼내고, id가 같은 todo 찾아서, text를 newText로 수정하자
-           // ...todo 이전 값
-            (todos.map((todo) => todo.id === id?  {...todo, text: newText} : todo))
+            // ...todo 이전 값
+            (todos.map((todo) => todo.id === id ? { ...todo, text: newText } : todo))
         )
     }
 
-    return(
+    const [bgColor, setBgColor] = useState(() => {
+        return localStorage.getItem("bgColor") || "#ffffff";
+    });
+    const changeBgColor = (color) => {
+        setBgColor(color);
+        document.body.style.backgroundColor = color;
+        localStorage.setItem("bgColor", color);
+    };
+
+    // 새로고침 후에도 배경색 유지하기
+    useEffect(() => {
+        document.body.style.backgroundColor = bgColor;
+    }, []);
+
+    return (
         <div className="todo">
-            <TodoHeader />
+            <TodoHeader changeBgColor={changeBgColor} currentBgColor={bgColor} />
             <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
             <TodoAdder addTodo={addTodo} />
         </div>
