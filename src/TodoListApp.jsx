@@ -77,23 +77,9 @@ function TodoListApp(){
         )
     }
 
-    const [bgColor, setBgColor] = useState(() => {
-        return localStorage.getItem("bgColor") || "#ffffff";
-    });
-
-    const changeBgColor = (color) => {
-        setBgColor(color);
-        document.body.style.backgroundColor = color;
-        localStorage.setItem("bgColor", color);
-    };
-
-    useEffect(() => {
-        document.body.style.backgroundColor = bgColor;
-    },[]);
-
     return(
         <div className="todo">
-            <TodoHeader changeBgColor={changeBgColor} currentBgColor={bgColor} />
+            <TodoHeader />
             <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
             <TodoAdder addTodo={addTodo} />
         </div>
